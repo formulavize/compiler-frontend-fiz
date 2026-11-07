@@ -1,12 +1,12 @@
 import { describe, expect, test } from "vitest";
 import { Text } from "@codemirror/state";
 import { fizLanguage } from "@formulavize/lang-fiz";
-import { collectRecoverySyntaxErrors } from "src/compiler/syntaxChecks";
+import { collectRecoverySyntaxErrors } from "src/syntaxChecks";
 import {
   ErrorCode,
   ErrorSource,
   type CompilationError,
-} from "src/compiler/compilationErrors";
+} from "src/compilationErrors";
 
 function collectBracketErrors(source: string): CompilationError[] {
   const tree = fizLanguage.parser.parse(source);

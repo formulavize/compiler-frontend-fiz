@@ -1,6 +1,6 @@
-import { RecipeTreeNode } from "./ast";
-import { Dag } from "./dag";
-import { CompilationError as Error } from "./compilationErrors";
+import { RecipeTreeNode } from "./ast.js";
+import { Dag } from "./dag.js";
+import { CompilationError as Error } from "./compilationErrors.js";
 
 export class Compilation {
   // keep intermediate states for debugging

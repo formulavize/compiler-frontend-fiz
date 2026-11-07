@@ -6,7 +6,7 @@ import {
   NodeType,
   RecipeTreeNode,
   StatementTreeNode,
-} from "./ast";
+} from "./ast.js";
 
 // An import a statement declares, and whether a variable was assigned from it.
 // The two forms scope their contents differently, which is why the flag

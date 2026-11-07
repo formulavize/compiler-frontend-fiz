@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
-import { parseFromSource } from "src/compiler/parser";
-import { DESCRIPTION_PROPERTY } from "src/compiler/constants";
+import { parseFromSource } from "src/parser";
+import { DESCRIPTION_PROPERTY } from "src/constants";
 import {
   RecipeTreeNode as Recipe,
   CallTreeNode as Call,
@@ -19,8 +19,8 @@ import {
   BaseTreeNode,
   ValueListTreeNode as ValueList,
   StatementListTreeNode as StatementList,
-} from "src/compiler/ast";
-import { CompilationError as Error } from "src/compiler/compilationErrors";
+} from "src/ast";
+import { CompilationError as Error } from "src/compilationErrors";
 
 function stripPositions(node: BaseTreeNode): BaseTreeNode {
   node.Position = null;

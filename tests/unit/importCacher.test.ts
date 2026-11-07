@@ -1,14 +1,14 @@
 import { describe, test, expect, vi, beforeEach } from "vitest";
-import { Dag } from "src/compiler/dag";
+import { Dag } from "src/dag";
 import {
   ImportCacher,
   ImportResolver,
   makeImportResolver,
-} from "src/compiler/importCacher";
-import { Compiler } from "src/compiler/driver";
-import { ParseResult } from "src/compiler/parser";
-import { FIZ_FILE_EXTENSION } from "src/compiler/constants";
-import { ErrorCode } from "src/compiler/compilationErrors";
+} from "src/importCacher";
+import { Compiler } from "src/driver";
+import { ParseResult } from "src/parser";
+import { FIZ_FILE_EXTENSION } from "src/constants";
+import { ErrorCode } from "src/compilationErrors";
 import {
   makeDefaultMockHeader,
   makeMockHeaderWithContentType,

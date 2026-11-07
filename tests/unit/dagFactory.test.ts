@@ -16,17 +16,17 @@ import {
   ImportTreeNode as Import,
   ValueListTreeNode as ValueList,
   StatementListTreeNode as StatementList,
-} from "src/compiler/ast";
-import { DESCRIPTION_PROPERTY } from "src/compiler/constants";
-import { Dag, StyleProperties, Keyword, DagStyle } from "src/compiler/dag";
-import { makeDag } from "src/compiler/dagFactory";
-import { ImportResolver } from "src/compiler/importCacher";
+} from "src/ast";
+import { DESCRIPTION_PROPERTY } from "src/constants";
+import { Dag, StyleProperties, Keyword, DagStyle } from "src/dag";
+import { makeDag } from "src/dagFactory";
+import { ImportResolver } from "src/importCacher";
 import {
   DEFAULT_POSITION,
   CompilationError,
   ErrorCode,
   ErrorSource,
-} from "src/compiler/compilationErrors";
+} from "src/compilationErrors";
 
 // No recipe here imports anything, so the resolver should never be reached.
 const dummyImportResolver: ImportResolver = (packageLocation) => {

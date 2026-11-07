@@ -11,7 +11,7 @@ import {
   NamespaceTreeNode as Namespace,
   ValueListTreeNode as ValueList,
   StatementListTreeNode as StatementList,
-} from "src/compiler/ast";
+} from "src/ast";
 
 describe("debugDumpTree consistency", () => {
   test("dumping nodes with children has no side effects", () => {

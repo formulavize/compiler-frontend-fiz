@@ -1,5 +1,5 @@
-import { FIZ_FILE_EXTENSION } from "./constants";
-import { ErrorCode, ImportError, describeError } from "./compilationErrors";
+import { FIZ_FILE_EXTENSION } from "./constants.js";
+import { ErrorCode, ImportError, describeError } from "./compilationErrors.js";
 
 // How an import location becomes recipe text, and what counts as a plausible
 // fiz file on the way in. Nothing here caches or compiles anything: this is

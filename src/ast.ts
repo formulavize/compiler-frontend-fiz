@@ -1,4 +1,4 @@
-import { Position } from "./compilationErrors";
+import { Position } from "./compilationErrors.js";
 
 export enum NodeType {
   Call,

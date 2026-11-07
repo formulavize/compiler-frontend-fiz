@@ -8,10 +8,10 @@ import {
   NamespaceTreeNode as Namespace,
   ValueListTreeNode as ValueList,
   StatementListTreeNode as StatementList,
-} from "src/compiler/ast";
-import { makeDag } from "src/compiler/dagFactory";
-import { Compiler } from "src/compiler/driver";
-import { ImportResolver } from "src/compiler/importCacher";
+} from "src/ast";
+import { makeDag } from "src/dagFactory";
+import { Compiler } from "src/driver";
+import { ImportResolver } from "src/importCacher";
 
 // No recipe here imports anything, so the resolver should never be reached.
 const dummyImportResolver: ImportResolver = (packageLocation) => {

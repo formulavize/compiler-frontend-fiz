@@ -3,9 +3,9 @@ import {
   fetchSourceOverHttp,
   IMPORT_FETCH_TIMEOUT_MS,
   MAX_IMPORT_BYTES,
-} from "src/compiler/importFetcher";
-import { FIZ_FILE_EXTENSION } from "src/compiler/constants";
-import { ErrorCode } from "src/compiler/compilationErrors";
+} from "src/importFetcher";
+import { FIZ_FILE_EXTENSION } from "src/constants";
+import { ErrorCode } from "src/compilationErrors";
 import {
   makeDefaultMockHeader,
   makeMockHeaders,

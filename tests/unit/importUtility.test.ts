@@ -1,9 +1,6 @@
 import { describe, test, expect } from "vitest";
-import { dumpImportTree } from "src/compiler/importUtility";
-import {
-  RecipeTreeNode as Recipe,
-  ImportTreeNode as Import,
-} from "src/compiler/ast";
+import { dumpImportTree } from "src/importUtility";
+import { RecipeTreeNode as Recipe, ImportTreeNode as Import } from "src/ast";
 
 // Builds a mock AstCacher from a map of path → list of direct imports. A path
 // absent from `deps` resolves to undefined, which is how the peek reports both

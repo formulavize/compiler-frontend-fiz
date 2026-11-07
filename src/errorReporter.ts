@@ -1,6 +1,6 @@
 import type { Diagnostic } from "@codemirror/lint";
 import type { Text } from "@codemirror/state";
-import { CompilationError as Error } from "./compilationErrors";
+import { CompilationError as Error } from "./compilationErrors.js";
 
 export function errorToDiagnostic(error: Error): Diagnostic {
   return {

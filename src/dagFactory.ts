@@ -17,10 +17,10 @@ import {
   ValueTreeNode,
   ImportTreeNode,
   StatementListTreeNode,
-} from "./ast";
-import { Dag, NodeId, StyleProperties, DagId, DagStyle } from "./dag";
-import { GLOBAL_STYLE_KEYWORD_MAP } from "./constants";
-import { ImportResolver } from "./importCacher";
+} from "./ast.js";
+import { Dag, NodeId, StyleProperties, DagId, DagStyle } from "./dag.js";
+import { GLOBAL_STYLE_KEYWORD_MAP } from "./constants.js";
+import { ImportResolver } from "./importCacher.js";
 import {
   CompilationError as Error,
   DEFAULT_POSITION,
@@ -28,7 +28,7 @@ import {
   ErrorSource,
   ImportError,
   describeError,
-} from "./compilationErrors";
+} from "./compilationErrors.js";
 
 export enum ScopeKind {
   Namespace = "ns",

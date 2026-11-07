@@ -1,13 +1,13 @@
-import { FIZ_FILE_EXTENSION } from "./constants";
-import { RecipeTreeNode } from "./ast";
-import { ParseResult, parseFromSource } from "./parser";
-import { getImportsFromRecipe } from "./astUtility";
-import { ErrorCode, ImportError } from "./compilationErrors";
+import { FIZ_FILE_EXTENSION } from "./constants.js";
+import { RecipeTreeNode } from "./ast.js";
+import { ParseResult, parseFromSource } from "./parser.js";
+import { getImportsFromRecipe } from "./astUtility.js";
+import { ErrorCode, ImportError } from "./compilationErrors.js";
 import {
   FetchSourceFn,
   fetchSourceOverHttp,
   hasFizExtension,
-} from "./importFetcher";
+} from "./importFetcher.js";
 
 // What a location holds does not depend on who asked for it, and neither does
 // the tree that text parses to, so one cache covers both and nothing in it is

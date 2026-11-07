@@ -1,9 +1,9 @@
 import { EditorState } from "@codemirror/state";
 import { syntaxTree } from "@codemirror/language";
 import { fizLanguage } from "@formulavize/lang-fiz";
-import { RecipeTreeNode } from "./ast";
-import { makeRecipeTree } from "./astFactory";
-import { CompilationError } from "./compilationErrors";
+import { RecipeTreeNode } from "./ast.js";
+import { makeRecipeTree } from "./astFactory.js";
+import { CompilationError } from "./compilationErrors.js";
 
 // Source text to AST. Two entry points because the editor already holds an
 // incrementally parsed tree, while every other caller (an import, the CLI, a

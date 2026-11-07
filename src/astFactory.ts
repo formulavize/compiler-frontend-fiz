@@ -1,6 +1,6 @@
 import { match } from "ts-pattern";
 import { Text } from "@codemirror/state";
-import { DESCRIPTION_PROPERTY } from "./constants";
+import { DESCRIPTION_PROPERTY } from "./constants.js";
 import { Tree, TreeCursor } from "@lezer/common";
 import {
   RecipeTreeNode,
@@ -21,15 +21,15 @@ import {
   NamespaceTreeNode,
   ImportTreeNode,
   StatementListTreeNode,
-} from "./ast";
+} from "./ast.js";
 import {
   CompilationError as Error,
   Position,
   DEFAULT_POSITION,
   ErrorCode,
   ErrorSource,
-} from "./compilationErrors";
-import { collectRecoverySyntaxErrors } from "./syntaxChecks";
+} from "./compilationErrors.js";
+import { collectRecoverySyntaxErrors } from "./syntaxChecks.js";
 
 function getPosition(c: TreeCursor): Position {
   return { from: c.from, to: c.to };

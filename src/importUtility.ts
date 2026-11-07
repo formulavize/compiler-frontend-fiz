@@ -1,5 +1,5 @@
-import { RecipeTreeNode } from "./ast";
-import { getImportsFromRecipe } from "./astUtility";
+import { RecipeTreeNode } from "./ast.js";
+import { getImportsFromRecipe } from "./astUtility.js";
 
 // Only the cache peek is needed here: the dump reports what has already been
 // compiled and never pulls in a package to describe it. Resolving to undefined

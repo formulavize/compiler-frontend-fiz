@@ -1,9 +1,13 @@
 import { EditorState } from "@codemirror/state";
-import { makeDag } from "./dagFactory";
-import { Compilation } from "./compilation";
-import { ParseResult, parseFromEditorState, parseFromSource } from "./parser";
-import { ImportCacher, makeImportResolver } from "./importCacher";
-import { FetchSourceFn } from "./importFetcher";
+import { makeDag } from "./dagFactory.js";
+import { Compilation } from "./compilation.js";
+import {
+  ParseResult,
+  parseFromEditorState,
+  parseFromSource,
+} from "./parser.js";
+import { ImportCacher, makeImportResolver } from "./importCacher.js";
+import { FetchSourceFn } from "./importFetcher.js";
 
 export interface CompilerOptions {
   // How imports are read. Defaults to fetching over HTTP; the CLI passes a

@@ -5,7 +5,7 @@ import {
   ErrorCode,
   ErrorSource,
   Position,
-} from "./compilationErrors";
+} from "./compilationErrors.js";
 
 function getPosition(c: TreeCursor): Position {
   return { from: c.from, to: c.to };

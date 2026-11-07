@@ -6,8 +6,8 @@ import {
   QualifiedVarTreeNode as QualifiedVariable,
   ValueListTreeNode as ValueList,
   RecipeTreeNode as Recipe,
-} from "src/compiler/ast";
-import { Compiler } from "src/compiler/driver";
+} from "src/ast";
+import { Compiler } from "src/driver";
 
 describe("basic compiler driver", () => {
   test("compile from editor state", async () => {
