@@ -1,0 +1,40 @@
+import { describe, test, expect } from "vitest";
+import {
+  RecipeTreeNode as Recipe,
+  CallTreeNode as Call,
+  AssignmentTreeNode as Assignment,
+  LocalVarTreeNode as LocalVariable,
+  QualifiedVarTreeNode as QualifiedVariable,
+  StyleTreeNode as Style,
+  NamedStyleTreeNode as NamedStyle,
+  AboutNoteTreeNode as AboutNote,
+  NamespaceTreeNode as Namespace,
+  ValueListTreeNode as ValueList,
+  StatementListTreeNode as StatementList,
+} from "src/ast";
+
+describe("debugDumpTree consistency", () => {
+  test("dumping nodes with children has no side effects", () => {
+    const callNode = new Call("f", new ValueList([]));
+    const assignCallNode = new Assignment([new LocalVariable("x")], callNode);
+    const assignVarNode = new Assignment(
+      [new LocalVariable("y")],
+      new QualifiedVariable(["x"]),
+    );
+    const namedStyleNode = new NamedStyle("s", new Style(new Map()));
+    const namespaceNode = new Namespace(
+      "n",
+      new StatementList([assignCallNode, assignVarNode]),
+    );
+    const aboutNoteNode = new AboutNote("about", new Style(new Map()));
+    const recipeNode = new Recipe([
+      aboutNoteNode,
+      namespaceNode,
+      namedStyleNode,
+    ]);
+
+    const firstDump = recipeNode.debugDumpTree();
+    const secondDump = recipeNode.debugDumpTree();
+    expect(firstDump).toEqual(secondDump);
+  });
+});
