@@ -1,9 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with
-code in this repository.
+Guidance for coding agents working in this repository. Humans should start with
+[README.md](README.md); everything here is additional context an agent needs to
+make a change that fits.
 
-## Project Overview
+## Project overview
 
 `@formulavize/compiler-frontend-fiz` is the compiler frontend for the **fiz**
 DSL: source text to a normalized AST to a `Dag`. It is renderer-neutral and
@@ -11,9 +12,22 @@ knows nothing about how a dag is drawn. Its main consumer is
 [editor-formulavize](https://github.com/anthologen/editor-formulavize); it was
 extracted from that repo with its history intact.
 
-**Requirements:** Node.js >= 26, pnpm >= 12
+Layout:
 
-## Commands
+- `src/` — the compiler, one flat directory of modules
+- `tests/unit/` — Vitest unit tests
+- `dist/` — build output (ESM + `.d.ts`), generated, not committed
+
+## Setup
+
+Node.js >= 26 and pnpm >= 12. `npm` and `yarn` are refused by a `preinstall`
+hook — use pnpm.
+
+```sh
+pnpm install
+```
+
+## Build and test commands
 
 ```sh
 pnpm build         # tsc -p tsconfig.build.json -> dist/ (ESM + .d.ts)
@@ -24,13 +38,16 @@ pnpm format        # Auto-fix formatting
 pnpm all           # build then test
 ```
 
-### Run a single test file
+Run a single test file:
 
 ```sh
 pnpm vitest run tests/unit/dagFactory.test.ts
 ```
 
-## Architecture: Data Flow
+Before handing work back, run `pnpm all` and `pnpm test:format` — that is what
+CI runs on every PR.
+
+## Architecture
 
 ```
 fiz source code
@@ -39,7 +56,7 @@ fiz source code
   → [dagFactory.ts]                           →  Dag (directed acyclic graph)
 ```
 
-## Compiler Pipeline (`src/`)
+### Compiler pipeline (`src/`)
 
 - **driver.ts** — `Compiler` class; entry points `compileFromEditor()` and
   `compileFromSource()`; returns a `Compilation` (AST + DAG + errors). Every
@@ -119,7 +136,9 @@ fiz source code
   that calls it, because the check has to run before the cache is probed so no
   unvalidated key is ever looked up
 
-## Package Boundary
+## Package boundary
+
+These are the constraints most likely to be broken by a well-meaning change:
 
 - **No renderer vocabulary.** Cytoscape style property names, layout keys and
   selector maps belong to the renderer, in `editor-formulavize`. `constants.ts`
@@ -136,23 +155,32 @@ fiz source code
   `CompilationError` to a `@codemirror/lint` `Diagnostic` and formats
   human-readable reports. Both its imports are type-only.
 
-## Module Layout and Imports
+## Code style
+
+TypeScript in strict mode; Prettier with default settings owns formatting, so
+run `pnpm format` rather than hand-aligning anything.
 
 Source modules live flat in `src/` and import each other **relatively**
 (`./ast`, `./dag`). Keep it that way: `tsconfig.build.json` clears `paths`
 because emitted JavaScript cannot carry a path alias.
 
+`src/index.ts` is a barrel re-exporting every module. Consumers may use it or
+the per-module subpath exports; the editor uses the subpaths. A new module in
+`src/` belongs in that barrel.
+
+## Testing instructions
+
 Tests live in `tests/unit/` and import through the `src/*` alias
 (`src/dagFactory`), declared in both `tsconfig.json` and `vite.config.ts`.
 
-`src/index.ts` is a barrel re-exporting every module. Consumers may use it or
-the per-module subpath exports; the editor uses the subpaths.
+Add or update tests alongside any behavior change, and keep `pnpm test` green
+before handing work back.
 
-## Code Quality
+## Commit and PR guidelines
 
-TypeScript is in strict mode. CI runs build and tests on every PR.
-Commits follow conventional commit format, which is what release-please reads
-to propose version bumps.
+Commits follow [conventional commit](https://www.conventionalcommits.org)
+format, which is what release-please reads to propose version bumps. CI runs
+build and tests on every PR.
 
 ## Publishing
 
