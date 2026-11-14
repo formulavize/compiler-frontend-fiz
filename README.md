@@ -1,8 +1,8 @@
 # compiler-frontend-fiz
 
-Compiler frontend for the **fiz** language: it turns fiz recipe source into a
-normalized AST and then into a DAG, collecting positioned diagnostics along the
-way. It knows nothing about how that DAG is drawn.
+Compiler frontend for the **fiz** language that turns fiz recipe source code
+into a normalized AST and then into a DAG, collecting diagnostics along the way.
+It is not responsible for drawing the DAG.
 
 ```
 fiz source  →  [parser]      →  Lezer syntax tree
@@ -32,8 +32,7 @@ CodeMirror editor, which already holds a parsed tree.
 
 Imports are read through an injectable `FetchSourceFn`
 (`CompilerOptions.fetchSource`), defaulting to HTTP. Pass your own to resolve
-imports off a filesystem — `node:fs` deliberately does not appear anywhere in
-this package.
+imports off a filesystem — `node:fs` is deliberately omitted from this package.
 
 ## Peer dependencies
 
